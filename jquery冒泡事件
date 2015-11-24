@@ -1,0 +1,30 @@
+我们经常会遇到点击两个或者多个重叠的层事件的时候，往往点击最里的的一层会接连触发外面的点击事件。这时候就需要用到stopPropagation事件即阻止冒泡事件
+html代码如下
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript">
+  $(function(){
+     $('input').bind('click',function(e){
+        e.stopPropagation()
+        alert('input')
+     })
+     $('div').bind('click',function(e){
+		   e.stopPropagation();
+		   alert('div')
+		})
+	$(document).bind('click',function(){
+		   alert('document')
+		})
+  })
+</script>
+</head>
+<body>
+     <div style="width:200px;height:200px;background:green;">
+        <input type="button" value="按钮">
+     </div>
+</body>
+<html>
